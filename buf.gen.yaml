@@ -1,0 +1,29 @@
+version: v2
+managed:
+  enabled: true
+  override:
+    - file_option: optimize_for
+      value: SPEED
+    - file_option: go_package_prefix
+      value: github.com/matt-de-young/bubble-benchmark/gen/go
+plugins:
+  - remote: buf.build/bufbuild/es
+    out: deno/gen
+  - remote: buf.build/protocolbuffers/go
+    out: gen/grpc/go
+    opt: paths=source_relative
+  - remote: buf.build/connectrpc/go
+    out: gen/grpc/go
+    opt: paths=source_relative
+  - remote: buf.build/community/stephenh-ts-proto
+    out: node/gen
+    opt:
+      - outputServices=nice-grpc
+      - outputServices=generic-definitions
+      - useExactTypes=false
+      - esModuleInterop=true
+      - env=node
+      - stringEnums=true
+    # strategy: all
+inputs:
+  - directory: proto

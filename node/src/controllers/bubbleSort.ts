@@ -1,6 +1,6 @@
-import { list } from '../../gen/grpc/sort';
+import { BubbleSortRequest, BubbleSortResponse } from '../../gen/grpc/ts/sort/v1/sort';
 
-export async function bubbleSort(request: list): Promise<list> {
+export async function bubbleSort(request: BubbleSortRequest): Promise<BubbleSortResponse> {
   request.data = request.data.slice();
 
   for (let i = 0; i < request.data.length; i++) {

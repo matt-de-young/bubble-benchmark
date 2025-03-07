@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package sort.v1;
+
+option go_package = "sort.v1";
+
+service SortService {
+  rpc bubbleSort(BubbleSortRequest) returns (BubbleSortResponse) {}
+}
+
+message BubbleSortRequest {
+  repeated int32 data = 1;
+}
+
+message BubbleSortResponse {
+  repeated int32 data = 1;
+}
