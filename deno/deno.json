@@ -1,0 +1,9 @@
+{
+  "nodeModulesDir": "auto",
+  "tasks": {
+    "dev": "deno run --allow-read --allow-net --allow-env --watch main.ts",
+    "gen": "mkdir -p gen/grpc && protoc --plugin=../node/node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=outputServices=nice-grpc,outputServices=generic-definitions,useExactTypes=false,esModuleInterop=true,env=node,stringEnums=true --ts_proto_out=./gen/grpc --proto_path=../proto ../proto/sort.proto"
+  },
+  "imports": {
+  }
+}
